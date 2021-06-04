@@ -1,10 +1,10 @@
-import { Greeting } from '@components/greeting'
+import { Reading } from '@screens/reading'
 import './app.scss'
 
 function App() {
   return (
     <div className="app">
-      <Greeting />
+      <Reading />
     </div>
   )
 }

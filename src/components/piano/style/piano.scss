@@ -1,0 +1,33 @@
+.piano-container {
+  display: flex;
+
+  .white-key {
+    width: 4rem;
+    height: 22rem;
+    background: white;
+    border: 1px solid black;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .black-key {
+    z-index: 1;
+    width: 2rem;
+    height: 16rem;
+    margin: 0 -1rem;
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgb(0, 0, 0),
+        rgb(0, 0, 0),
+        rgb(45, 44, 44),
+        rgb(68, 68, 68),
+        rgb(29, 29, 29)
+      );
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .active {
+    background-color: blue;
+    background-image: none;
+  }
+}
