@@ -50,6 +50,8 @@ module.exports = {
     'import/prefer-default-export': OFF,
     'import/no-unresolved': ERROR,
     'import/no-dynamic-require': OFF,
+
+    'unicorn/consistent-function-scoping': OFF,
     'unicorn/prefer-module': OFF,
     'unicorn/filename-case': [
       ERROR,
@@ -66,6 +68,11 @@ module.exports = {
         },
       },
     ],
+    'unicorn/prevent-abbreviations': OFF,
+    'unicorn/no-array-reduce': OFF,
+    'unicorn/no-null': OFF,
+    'unicorn/no-array-for-each': OFF,
+
     'react/prop-types': OFF,
     'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', 'ts', '.jsx', 'js'] }],
     'react/jsx-indent-props': [ERROR, 2],
@@ -76,6 +83,15 @@ module.exports = {
     'react/state-in-constructor': OFF,
     'react/jsx-props-no-spreading': OFF,
     'react/react-in-jsx-scope': OFF,
+    'react-hooks/exhaustive-deps': OFF,
+
+    'jsx-a11y/click-events-have-key-events': OFF,
+    'jsx-a11y/no-noninteractive-element-interactions': OFF,
+    'jsx-a11y/no-static-element-interactions': OFF,
+
+    'no-shadow': 'off',
+    '@typescript-eslint/ban-ts-comment': OFF,
+    '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-var-requires': OFF,
     '@typescript-eslint/no-useless-constructor': ERROR,
     '@typescript-eslint/no-empty-function': WARN,
@@ -84,7 +100,11 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': OFF,
     '@typescript-eslint/no-use-before-define': ERROR,
     '@typescript-eslint/no-unused-vars': WARN,
+
     'global-require': OFF,
     'no-use-before-define': OFF,
+    'no-restricted-syntax': OFF,
+    'no-unused-expressions': OFF,
+    'no-param-reassign': OFF,
   },
 }

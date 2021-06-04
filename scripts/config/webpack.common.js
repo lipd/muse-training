@@ -11,7 +11,7 @@ const getCssLoaders = (importLoaders) => [
   {
     loader: 'css-loader',
     options: {
-      modules: true,
+      modules: false,
       sourceMap: isDevelopment,
       importLoaders,
     },
