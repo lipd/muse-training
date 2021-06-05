@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react'
 import './style/piano.scss'
 import { Synth } from 'tone'
 import classNames from 'classnames'
+import { useKeyBoard } from '@hooks/use-keyboard'
 import { KEYS, KEYType, KEY_MAP } from './key-data'
 
 export interface KEYState extends KEYType {
@@ -92,14 +93,7 @@ export const Piano = ({ setNotes }: PianoProps) => {
     }
   }, [])
 
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('keyup', handleKeyUp)
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('keyup', handleKeyUp)
-    }
-  }, [])
+  useKeyBoard({ handleKeyDown, handleKeyUp })
 
   const handlePianoKeyDown = (pitch: string) => {
     synth.triggerAttackRelease(pitch, '8n')

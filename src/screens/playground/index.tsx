@@ -2,9 +2,9 @@ import { Board } from '@components/board'
 import { Chord } from '@components/chord'
 import { Piano } from '@components/piano'
 import { useState } from 'react'
-import './style/index.scss'
+import './style/playground.scss'
 
-export const Reading = () => {
+export const Playground = () => {
   const [notes, setNotes] = useState<Set<string>>(() => new Set())
   return (
     <div className="reading-container">

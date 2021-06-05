@@ -1,7 +1,7 @@
 import { getStructure } from '@utils/note'
 import { useEffect, useRef } from 'react'
 import Vex from 'vexflow'
-import './style/index.scss'
+import './style/board.scss'
 
 interface ScoreRef {
   renderer?: Vex.Flow.Renderer
