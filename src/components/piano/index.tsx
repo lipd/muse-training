@@ -34,6 +34,12 @@ const getNotes = (cache: KeysCache) => {
   return new Set(notes)
 }
 
+const pitch2Note = (pitch: string) => {
+  const regex = /(\D*)(\d*)/
+  const res = regex.exec(pitch) as string[]
+  return `${res[1]}/${res[2]}`
+}
+
 const reducer = (state: KEYState[], action: Action) => {
   switch (action.type) {
     case ActionKind.Activate:
@@ -57,7 +63,7 @@ const initialState = KEYS.map((key) => ({
 }))
 
 interface PianoProps {
-  setNotes: (state: Set<string>) => void
+  setNotes: React.Dispatch<React.SetStateAction<Set<string>>>
 }
 export const Piano = ({ setNotes }: PianoProps) => {
   const synth = useMemo(() => new Synth().toDestination(), [])
@@ -98,10 +104,20 @@ export const Piano = ({ setNotes }: PianoProps) => {
   const handlePianoKeyDown = (pitch: string) => {
     synth.triggerAttackRelease(pitch, '8n')
     dispatch({ type: ActionKind.Activate, pitch })
+    setNotes((prev) => {
+      const next = new Set(prev)
+      next.add(pitch2Note(pitch))
+      return next
+    })
   }
 
   const handlePianoKeyUp = (pitch: string) => {
     dispatch({ type: ActionKind.Deactivate, pitch })
+    setNotes((prev) => {
+      const next = new Set(prev)
+      next.delete(pitch2Note(pitch))
+      return next
+    })
   }
 
   return (
