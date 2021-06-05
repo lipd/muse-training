@@ -84,6 +84,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
+    "@tonaljs/chord-detect": "^4.5.1",
     "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "html-webpack-plugin": "^5.3.1",

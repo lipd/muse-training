@@ -1,4 +1,4 @@
-import { getStructure } from '@utils/sorter'
+import { getStructure } from '@utils/note'
 import { useEffect, useRef } from 'react'
 import Vex from 'vexflow'
 import './style/index.scss'
