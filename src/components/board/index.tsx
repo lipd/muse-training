@@ -47,7 +47,7 @@ const drawNotes = ({ notes, score, prevSVGRef }: IDrawAppend) => {
 
   score.tickContext.addTickable(note)
   const group = score.context.openGroup() as SVGAElement
-  score.tickContext.preFormat().setX(50)
+  score.tickContext.preFormat().setX(70)
   // @ts-ignore
   note.draw()
   score.context.closeGroup()
@@ -77,9 +77,12 @@ export const Board = ({ notes }: BoardProps) => {
     const score = scoreRef.current as Score
     score.renderer = new Renderer(containerRef.current as HTMLDivElement, Renderer.Backends.SVG)
     score.context = score.renderer.getContext()
+    score.context.resize(500, 300)
+    // @ts-ignore
+    score.context.setViewBox(0, 0, 250, 250)
     score.svg = (score.context as any).svg as SVGElement
     score.tickContext = new TickContext()
-    score.stave = new Stave(10, 10, 200).addClef('treble')
+    score.stave = new Stave(0, 80, 260).addClef('treble')
     score.stave.setContext(score.context).draw()
   }, [])
 

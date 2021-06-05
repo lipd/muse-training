@@ -1,19 +1,22 @@
 .piano-container {
   display: flex;
+  padding: 1rem;
+  background: white;
 
   .white-key {
-    width: 4rem;
-    height: 22rem;
+    width: 5rem;
+    height: 20rem;
     background: white;
-    border: 1px solid black;
-    border-radius: 0 0 0.5rem 0.5rem;
+    border: 1px solid silver;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%), 0 1px 2px 0 rgb(0 0 0 / 12%);
   }
 
   .black-key {
     z-index: 1;
-    width: 2rem;
-    height: 16rem;
-    margin: 0 -1rem;
+    width: 3rem;
+    height: 14rem;
+    margin: 0 -1.5rem;
     background-image:
       linear-gradient(
         to bottom,
@@ -23,11 +26,13 @@
         rgb(68, 68, 68),
         rgb(29, 29, 29)
       );
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 0.8rem 0.8rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 60%), 0 1px 2px 0 rgb(0 0 0 / 20%);
   }
 
   .active {
-    background-color: blue;
+    background-color: greenyellow;
     background-image: none;
+    box-shadow: none;
   }
 }

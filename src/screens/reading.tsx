@@ -12,7 +12,6 @@ export const Reading = () => {
         <Board notes={notes} />
         <Chord notes={notes} />
         <Piano setNotes={setNotes} />
-        <div>{JSON.stringify([...(notes as any)])}</div>
       </div>
     </div>
   )

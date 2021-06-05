@@ -1,7 +1,7 @@
 import { getStructure, noteSorter } from '@utils/note'
 import { detect } from '@tonaljs/chord-detect'
 import { useMemo } from 'react'
-import './style/index.scss'
+import './style/chord.scss'
 
 interface ChordProps {
   notes: Set<string>
