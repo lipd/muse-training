@@ -1,6 +1,6 @@
 import { Board } from '@components/board'
 import { Chord } from '@components/chord'
-import { Piano } from '@components/piano'
+import { PlaygroundPiano } from '@screens/playground/playground-piano'
 import { useState } from 'react'
 import './style/playground.scss'
 
@@ -11,7 +11,7 @@ export const Playground = () => {
       <div className="playground">
         <Board notes={notes} />
         <Chord notes={notes} />
-        <Piano setNotes={setNotes} />
+        <PlaygroundPiano setNotes={setNotes} />
       </div>
     </div>
   )
