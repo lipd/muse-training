@@ -85,6 +85,7 @@ module.exports = {
     'react/react-in-jsx-scope': OFF,
     'react/require-default-props': OFF,
     'react-hooks/exhaustive-deps': OFF,
+    'react/no-children-prop': OFF,
 
     'jsx-a11y/click-events-have-key-events': OFF,
     'jsx-a11y/no-noninteractive-element-interactions': OFF,

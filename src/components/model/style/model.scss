@@ -1,0 +1,18 @@
+.model-container {
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .model {
+    padding: 2rem;
+    font-size: 2rem;
+    background: white;
+    border: 5px solid limegreen;
+    border-radius: 1rem;
+  }
+}

@@ -1,0 +1,34 @@
+.display-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+  background: white;
+
+  .accuracy {
+    margin-right: 5rem;
+    color: limegreen;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .button {
+    margin-right: 2rem;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+
+  .report-button {
+    color: limegreen;
+    border: 3px solid limegreen;
+  }
+
+  .reset-button {
+    margin: 0;
+    color: #ef586c;
+    border: 3px solid #ef586c;
+  }
+}
