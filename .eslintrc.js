@@ -83,6 +83,7 @@ module.exports = {
     'react/state-in-constructor': OFF,
     'react/jsx-props-no-spreading': OFF,
     'react/react-in-jsx-scope': OFF,
+    'react/require-default-props': OFF,
     'react-hooks/exhaustive-deps': OFF,
 
     'jsx-a11y/click-events-have-key-events': OFF,

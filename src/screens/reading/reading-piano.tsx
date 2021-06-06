@@ -3,7 +3,6 @@ import { Synth } from 'tone'
 import { useKeyBoard } from '@hooks/use-keyboard'
 import { Piano } from '@components/piano'
 import { KEYS, KEYType, KEY_MAP } from '@components/piano/key-data'
-import { pitch2Note } from '@utils/note'
 
 export interface KEYState extends KEYType {
   active: boolean
@@ -35,6 +34,12 @@ const getNotes = (cache: KeysCache) => {
   return new Set(notes)
 }
 
+const pitch2Note = (pitch: string) => {
+  const regex = /(\D*)(\d*)/
+  const res = regex.exec(pitch) as string[]
+  return `${res[1]}/${res[2]}`
+}
+
 const reducer = (state: KEYState[], action: Action) => {
   switch (action.type) {
     case ActionKind.Activate:
@@ -60,15 +65,17 @@ const initialState = KEYS.map((key) => ({
 interface PianoProps {
   setNotes: React.Dispatch<React.SetStateAction<Set<string>>>
 }
-export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
+export const ReadingPiano = ({ setNotes }: PianoProps) => {
   const synth = useMemo(() => new Synth().toDestination(), [])
   const [pianoState, dispatch] = useReducer(reducer, initialState)
   const activeKeysRef = useRef<KeysCache>({})
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (activeKeysRef.current[e.key]) return
-    activeKeysRef.current[e.key] = true
-    setNotes(getNotes(activeKeysRef.current))
+    if (!KEY_MAP[e.key]) return
+    const keyCache = activeKeysRef.current
+    if (keyCache[e.key] || Object.keys(keyCache).length > 0) return
+    keyCache[e.key] = true
+    setNotes(getNotes(keyCache))
     const keyState = pianoState.find((each) => each.key === e.key)
     if (keyState) {
       const { pitch } = keyState
@@ -78,7 +85,11 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   }, [])
 
   const handleKeyUp = useCallback((e: KeyboardEvent) => {
-    delete activeKeysRef.current[e.key]
+    if (!KEY_MAP[e.key]) return
+
+    const keyCache = activeKeysRef.current
+    if (!keyCache[e.key]) return
+    delete keyCache[e.key]
     setNotes(getNotes(activeKeysRef.current))
     const keyState = pianoState.find((each) => each.key === e.key)
     if (keyState) {
@@ -90,6 +101,9 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   useKeyBoard({ handleKeyDown, handleKeyUp })
 
   const handlePianoKeyDown = (pitch: string) => {
+    const keyCache = activeKeysRef.current
+    if (keyCache[pitch] || Object.keys(keyCache).length > 0) return
+    keyCache[pitch] = true
     synth.triggerAttackRelease(pitch, '8n')
     dispatch({ type: ActionKind.Activate, pitch })
     setNotes((prev) => {
@@ -100,10 +114,14 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   }
 
   const handlePianoKeyUp = (pitch: string) => {
+    const keyCache = activeKeysRef.current
+    delete keyCache[pitch]
     dispatch({ type: ActionKind.Deactivate, pitch })
     setNotes((prev) => {
+      const note = pitch2Note(pitch)
+      if (!prev.has(note)) return prev
       const next = new Set(prev)
-      next.delete(pitch2Note(pitch))
+      next.delete(note)
       return next
     })
   }

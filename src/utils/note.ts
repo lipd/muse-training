@@ -1,6 +1,12 @@
 const letterOrder: string[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 const accOrder: string[] = ['bb', 'b', '', '#', '##']
 
+export const pitch2Note = (pitch: string) => {
+  const regex = /(\D*)(\d*)/
+  const res = regex.exec(pitch) as string[]
+  return `${res[1]}/${res[2]}`
+}
+
 export const getStructure = (note: string): [number, string, string] => {
   const [name, octave] = note.split('/')
   const letter = name[0]
