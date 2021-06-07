@@ -1,0 +1,21 @@
+.report-container {
+
+  .report-title {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50rem;
+  }
+
+  .tag {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background: rgb(218, 206, 32);
+    border-radius: 2rem;
+  }
+}
