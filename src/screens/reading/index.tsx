@@ -106,7 +106,7 @@ export const Reading = () => {
 
   return (
     <div className="reading-container">
-      <div className="playground">
+      <div className="reading">
         <Board normalNotes={comNote ? [comNote] : []} correctNotes={correctNotes} wrongNotes={wrongNotes} />
         <Display recorder={recorder} dispatch={dispatch} />
         <ReadingPiano setNotes={setUserNotes} />

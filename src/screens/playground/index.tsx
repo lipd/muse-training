@@ -7,7 +7,7 @@ import './style/playground.scss'
 export const Playground = () => {
   const [notes, setNotes] = useState<Set<string>>(() => new Set())
   return (
-    <div className="reading-container">
+    <div className="playground-container">
       <div className="playground">
         <Board normalNotes={[...notes]} />
         <Chord notes={notes} />

@@ -73,3 +73,19 @@ export const KEY_MAP: { [p: string]: { pitch: string; octave: number } } = {
   b: { pitch: 'B#', octave: 5 },
   n: { pitch: 'C', octave: 5 },
 }
+
+export const INTERVAL_MAP: string[] = [
+  '纯一',
+  '小二',
+  '大二',
+  '小三',
+  '大三',
+  '纯四',
+  '增四',
+  '纯五',
+  '小六',
+  '大六',
+  '小七',
+  '大七',
+  '纯八',
+]
