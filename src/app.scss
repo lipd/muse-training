@@ -3,7 +3,6 @@ body {
   margin: 0;
   font-size: 62.5%;
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: grey;
 }
 
 * {
@@ -31,13 +30,22 @@ h6 {
 .link-group {
   display: flex;
   justify-content: space-between;
+  padding: 0 2rem;
   background: white;
 
   .link {
     display: block;
-    color: #f0610e;
+    padding: 1.5rem;
+    color: #5372ff;
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-decoration: none;
+    border: 3px solid #5372ff;
+    border-radius: 5rem;
+  }
+
+  .link:hover {
+    color: white;
+    background-color: #5372ff;
   }
 }

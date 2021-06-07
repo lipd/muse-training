@@ -26,9 +26,19 @@
     border: 3px solid dodgerblue;
   }
 
+  .start-button:hover {
+    color: white;
+    background: dodgerblue;
+  }
+
   .replay-button {
     color: #ebaf56;
     border: 3px solid #ebaf56;
+  }
+
+  .replay-button:hover {
+    color: white;
+    background: #ebaf56;
   }
 
   .report-button {
@@ -36,9 +46,19 @@
     border: 3px solid limegreen;
   }
 
+  .report-button:hover {
+    color: white;
+    background: limegreen;
+  }
+
   .reset-button {
     margin: 0;
     color: #ef586c;
     border: 3px solid #ef586c;
+  }
+
+  .reset-button:hover {
+    color: white;
+    background: #ef586c;
   }
 }

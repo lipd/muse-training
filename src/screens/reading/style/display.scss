@@ -26,9 +26,19 @@
     border: 3px solid limegreen;
   }
 
+  .report-button:hover {
+    color: white;
+    background: limegreen;
+  }
+
   .reset-button {
     margin: 0;
     color: #ef586c;
     border: 3px solid #ef586c;
+  }
+
+  .reset-button:hover {
+    color: white;
+    background: #ef586c;
   }
 }
