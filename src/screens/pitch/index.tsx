@@ -53,7 +53,7 @@ export const Pitch = () => {
               currentPitch: pitch,
               idealFreq: String(idealFreq),
               actualFreq: String(Math.floor(freq)),
-              diff: String(Math.floor(idealFreq - freq)),
+              diff: String(Math.floor(freq - idealFreq)),
             })
             const note = enharmonicNote
             setNotes(new Set([note]))
