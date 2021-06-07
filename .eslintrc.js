@@ -96,7 +96,7 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-var-requires': OFF,
     '@typescript-eslint/no-useless-constructor': ERROR,
-    '@typescript-eslint/no-empty-function': WARN,
+    '@typescript-eslint/no-empty-function': OFF,
     '@typescript-eslint/explicit-function-return-type': OFF,
     '@typescript-eslint/explicit-module-boundary-types': OFF,
     '@typescript-eslint/no-explicit-any': OFF,
@@ -108,5 +108,6 @@ module.exports = {
     'no-restricted-syntax': OFF,
     'no-unused-expressions': OFF,
     'no-param-reassign': OFF,
+    'no-alert': OFF,
   },
 }

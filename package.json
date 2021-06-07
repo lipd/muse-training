@@ -86,10 +86,12 @@
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
     "@tonaljs/chord-detect": "^4.5.1",
+    "@tonaljs/midi": "^4.5.1",
     "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "html-webpack-plugin": "^5.3.1",
     "immer": "^9.0.2",
+    "pitchfinder": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",

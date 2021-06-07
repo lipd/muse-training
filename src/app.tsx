@@ -1,4 +1,5 @@
 import { Interval } from '@screens/interval'
+import { Pitch } from '@screens/pitch'
 import { Playground } from '@screens/playground'
 import { Reading } from '@screens/reading'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
@@ -19,7 +20,7 @@ function App() {
             <Link className="link" to="/interval">
               音程听辨
             </Link>
-            <Link className="link" to="/">
+            <Link className="link" to="/pitch">
               视唱音准
             </Link>
           </div>
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path="/reading">
               <Reading />
+            </Route>
+            <Route path="/pitch">
+              <Pitch />
             </Route>
             <Route path="/">
               <Playground />

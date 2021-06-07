@@ -74,6 +74,14 @@ export const KEY_MAP: { [p: string]: { pitch: string; octave: number } } = {
   n: { pitch: 'C', octave: 5 },
 }
 
+export const ENHARMONIC_MAP: { [p: string]: string } = {
+  Db: 'C#',
+  Eb: 'D#',
+  Gb: 'F#',
+  Ab: 'G#',
+  Bb: 'A#',
+}
+
 export const INTERVAL_MAP: string[] = [
   '纯一',
   '小二',

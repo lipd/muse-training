@@ -1269,6 +1269,13 @@
   resolved "https://registry.yarnpkg.com/@tonaljs/core/-/core-4.5.1.tgz#7297a75c0a8fce6feda836b2e1aec93bfd1c83fb"
   integrity sha512-dJxnI3wKZkgMhhrzV9gR+JBUUncgKcU2sxriVR53xCrxInwd7ql00018y21V8X9wsiMwyFjpGwlmegQEw13fkg==
 
+"@tonaljs/midi@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@tonaljs/midi/-/midi-4.5.1.tgz#9e6a07b7dfd1584d7df41bc0d648ae8a946e4fb7"
+  integrity sha512-CMfBtouilxGRR+lrmjiupMD10KRCanMvFVbGdcmwHRDNBQFtUw2fOUQoWdinEwky2KFPbuxpQ2vXibmiAViH/Q==
+  dependencies:
+    "@tonaljs/core" "^4.5.1"
+
 "@tonaljs/pcset@^4.5.1":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@tonaljs/pcset/-/pcset-4.5.1.tgz#83b7ff5e998a1de2302c3857aa1d093c364fb2ab"
@@ -6526,6 +6533,11 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
+
+pitchfinder@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/pitchfinder/-/pitchfinder-2.3.1.tgz#b2033b5de43f3067f8a0ad439b9b4a5e10fc5599"
+  integrity sha512-lYZo2J9i6OV769VKGpeEpvotc7GSLS98iP8ZyRurhZZDIpyDt09dBG+Z4+amx8379pQ83AjI9Pde8//4R7Rc1Q==
 
 pkg-dir@^2.0.0:
   version "2.0.0"

@@ -1,3 +1,5 @@
+import { ENHARMONIC_MAP } from '@components/piano/key-data'
+
 const letterOrder: string[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 const accOrder: string[] = ['bb', 'b', '', '#', '##']
 
@@ -28,4 +30,11 @@ export const noteSorter = (n1: string, n2: string) => {
   }
 
   return 0
+}
+
+export const enharmonic = (note: string) => {
+  const [octave, letter, acc] = getStructure(note)
+  const enharmonicName = ENHARMONIC_MAP[letter + acc]
+  if (!enharmonicName) return note
+  return `${enharmonicName}/${octave}`
 }
