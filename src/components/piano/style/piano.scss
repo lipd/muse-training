@@ -3,17 +3,30 @@
   padding: 1rem;
   background: white;
 
+  .pitch-name {
+    font-weight: 500;
+    cursor: default;
+  }
+
   .white-key {
+    display: flex;
+    justify-content: center;
     width: 5rem;
     height: 20rem;
     background: white;
     border: 1px solid silver;
     border-radius: 0 0 1rem 1rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%), 0 1px 2px 0 rgb(0 0 0 / 12%);
+
+    .pitch-name {
+      margin-top: 18rem;
+    }
   }
 
   .black-key {
     z-index: 1;
+    display: flex;
+    justify-content: center;
     width: 3rem;
     height: 14rem;
     margin: 0 -1.5rem;
@@ -28,6 +41,11 @@
       );
     border-radius: 0 0 0.8rem 0.8rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 60%), 0 1px 2px 0 rgb(0 0 0 / 20%);
+
+    .pitch-name {
+      margin-top: 10rem;
+      color: white;
+    }
   }
 
   .active {

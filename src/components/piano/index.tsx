@@ -22,7 +22,9 @@ export const Piano = ({ pianoState, handlePianoKeyDown, handlePianoKeyUp }: Pian
           onMouseUp={() => handlePianoKeyUp(key.pitch)}
           onMouseLeave={() => handlePianoKeyUp(key.pitch)}
           onDragStart={(e) => e.preventDefault()}
-        />
+        >
+          <div className="pitch-name">{key.pitch}</div>
+        </div>
       ))}
     </div>
   )
