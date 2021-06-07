@@ -35,7 +35,7 @@ export const Pitch = () => {
         streamRef.current = stream
         const context = new AudioContext()
         const source = context.createMediaStreamSource(stream)
-        const processor = context.createScriptProcessor(1024 * 4, 1, 1)
+        const processor = context.createScriptProcessor(1024 * 2, 1, 1)
 
         source.connect(processor)
         processor.connect(context.destination)
@@ -84,7 +84,12 @@ export const Pitch = () => {
       <div className="pitch">
         <Board normalNotes={[...notes]} />
         <Display>
-          <h1>{`当前音高: ${display.currentPitch} 理想频率：${display.idealFreq} 实际频率：${display.actualFreq} 差值：${display.diff}`}</h1>
+          <h1>
+            <span className="display-item">{`当前音高: ${display.currentPitch}`}</span>
+            <span className="display-item">{`理想频率：${display.idealFreq}`}</span>
+            <span className="display-item">{`实际频率：${display.actualFreq}`}</span>
+            <span className="display-item">{`差值：${display.diff}`}</span>
+          </h1>
         </Display>
         <PitchPiano notes={[...notes]} />
       </div>
