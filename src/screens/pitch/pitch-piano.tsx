@@ -42,5 +42,13 @@ export const PitchPiano = ({ notes }: PitchPianoProps) => {
 
   const state = generateState(notes)
 
-  return <Piano pianoState={state} handlePianoKeyDown={handlePianoKeyDown} handlePianoKeyUp={handlePianoKeyUp} />
+  return (
+    <Piano
+      pianoState={state}
+      handlePianoKeyDown={handlePianoKeyDown}
+      handlePianoKeyUp={handlePianoKeyUp}
+      banMidi
+      instruction="视唱音准：请对麦克风进行哼唱或吹口哨，系统会判断音高并显示在五线谱和键盘上，并对音准进行分析。"
+    />
+  )
 }

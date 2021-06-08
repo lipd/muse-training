@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import { Synth, SynthOptions } from 'tone'
 import { useKeyBoard } from '@hooks/use-keyboard'
 import { Piano } from '@components/piano'
@@ -65,6 +65,7 @@ interface PianoProps {
 export const IntervalPiano = ({ setNotes, synth }: PianoProps) => {
   const [pianoState, dispatch] = useReducer(reducer, initialState)
   const pitchCacheRef = useRef<PitchCache>({})
+  const [midiConnected, setMidiConnected] = useState(false)
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!KEY_MAP[e.key]) return
@@ -92,6 +93,7 @@ export const IntervalPiano = ({ setNotes, synth }: PianoProps) => {
   useEffect(() => {
     return () => {
       WebMidi.disable()
+      setMidiConnected(false)
     }
   }, [])
 
@@ -124,15 +126,25 @@ export const IntervalPiano = ({ setNotes, synth }: PianoProps) => {
   }
 
   const handleConnectMidi = () => {
+    if (!navigator.requestMIDIAccess) {
+      alert('当前浏览器不支持 MIDI 连接，请使用 Chrome 等支持 Web MIDI 的浏览器')
+      return
+    }
     WebMidi.enable(() => {
+      if (WebMidi.inputs.length === 0) {
+        alert('没有找到可连接的 MIDI 设备，请检查 MIDI 设备是否正确连接')
+        return
+      }
       const input = WebMidi.inputs[0]
       input.addListener('noteon', 'all', handleNoteon)
       input.addListener('noteoff', 'all', handleNoteoff)
+      setMidiConnected(true)
     })
   }
 
   const handleDisconnectMidi = () => {
     WebMidi.disable()
+    setMidiConnected(false)
   }
 
   const handlePianoKeyDown = (pitch: string) => {
@@ -168,6 +180,8 @@ export const IntervalPiano = ({ setNotes, synth }: PianoProps) => {
       handlePianoKeyUp={handlePianoKeyUp}
       handleConnectMidi={handleConnectMidi}
       handleDisconnectMidi={handleDisconnectMidi}
+      midiConnected={midiConnected}
+      instruction="音程听辨：点击开始进行练习，系统会随机产生一个音程并播放，音程第一个音会显示在五线谱上，你需要根据音响和第一个音判断第二个音的音高。"
     />
   )
 }

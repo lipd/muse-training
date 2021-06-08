@@ -18,13 +18,36 @@ h6 {
   margin: 0;
 }
 
+button {
+  color: #5372ff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  background: white;
+  border: 2px solid #5372ff;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  color: white;
+  background: #5372ff;
+}
+
+button.ban {
+  color: white;
+  background: lightgray;
+  border: none;
+  cursor: not-allowed;
+}
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100vw;
   height: 100vh;
+  padding-top: 3rem;
 }
 
 .link-group {

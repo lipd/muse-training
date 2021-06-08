@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { Synth } from 'tone'
 import { useKeyBoard } from '@hooks/use-keyboard'
 import { Piano } from '@components/piano'
@@ -65,6 +65,7 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   const synth = useMemo(() => new Synth().toDestination(), [])
   const [pianoState, dispatch] = useReducer(reducer, initialState)
   const activeKeysRef = useRef<KeysCache>({})
+  const [midiConnected, setMidiConnected] = useState(false)
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (activeKeysRef.current[e.key]) return
@@ -93,6 +94,7 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   useEffect(() => {
     return () => {
       WebMidi.disable()
+      setMidiConnected(false)
     }
   }, [])
 
@@ -120,15 +122,25 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
   }
 
   const handleConnectMidi = () => {
+    if (!navigator.requestMIDIAccess) {
+      alert('当前浏览器不支持 MIDI 连接，请使用 Chrome 等支持 Web MIDI 的浏览器')
+      return
+    }
     WebMidi.enable(() => {
+      if (WebMidi.inputs.length === 0) {
+        alert('没有找到可连接的 MIDI 设备，请检查 MIDI 设备是否正确连接')
+        return
+      }
       const input = WebMidi.inputs[0]
       input.addListener('noteon', 'all', handleNoteon)
       input.addListener('noteoff', 'all', handleNoteoff)
+      setMidiConnected(true)
     })
   }
 
   const handleDisconnectMidi = () => {
     WebMidi.disable()
+    setMidiConnected(false)
   }
 
   const handlePianoKeyDown = (pitch: string) => {
@@ -157,6 +169,8 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
       handlePianoKeyUp={handlePianoKeyUp}
       handleConnectMidi={handleConnectMidi}
       handleDisconnectMidi={handleDisconnectMidi}
+      midiConnected={midiConnected}
+      instruction="自由练习：你可以通过鼠标、键盘和 MIDI 设备输入音符，系统会将输入显示在五线谱和虚拟键盘上，并显示你输入的和弦性质。"
     />
   )
 }

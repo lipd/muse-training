@@ -1,4 +1,15 @@
-.piano-keyboard-container {
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 0 1rem;
+
+  button {
+    display: block;
+  }
+}
+
+.keyboard-container {
   display: flex;
   padding: 1rem;
   background: white;
@@ -8,9 +19,12 @@
     cursor: default;
   }
 
+  .key-map {
+    cursor: default;
+  }
+
   .white-key {
-    display: flex;
-    justify-content: center;
+    position: relative;
     width: 5rem;
     height: 20rem;
     background: white;
@@ -19,14 +33,26 @@
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%), 0 1px 2px 0 rgb(0 0 0 / 12%);
 
     .pitch-name {
+      position: absolute;
+      width: 100%;
       margin-top: 18rem;
+      text-align: center;
+    }
+
+    .key-map {
+      position: absolute;
+      width: 100%;
+      margin-top: 15.2rem;
+      color: rgb(155, 155, 155);
+      font-weight: 600;
+      font-size: 1.3rem;
+      text-align: center;
     }
   }
 
   .black-key {
+    position: relative;
     z-index: 1;
-    display: flex;
-    justify-content: center;
     width: 3rem;
     height: 14rem;
     margin: 0 -1.5rem;
@@ -42,9 +68,22 @@
     border-radius: 0 0 0.8rem 0.8rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 60%), 0 1px 2px 0 rgb(0 0 0 / 20%);
 
+    .key-map {
+      position: absolute;
+      width: 100%;
+      margin-top: 7.4rem;
+      color: gray;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
     .pitch-name {
+      position: absolute;
+      width: 100%;
       margin-top: 10rem;
       color: white;
+      text-align: center;
     }
   }
 
@@ -52,5 +91,18 @@
     background-color: greenyellow;
     background-image: none;
     box-shadow: none;
+  }
+}
+
+.instruction-container {
+  margin: 1rem 1rem;
+  padding: 1.5rem 1rem;
+  border: 3px solid #5373ff;
+  border-radius: 1rem;
+
+  .instruction {
+    color: #5373ff;
+    font-weight: 500;
+    font-size: 1.4rem;
   }
 }
