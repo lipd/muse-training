@@ -3,6 +3,7 @@ import { KEYS } from '@components/piano/key-data'
 import { pitch2Note } from '@utils/note'
 import { useEffect, useReducer, useState } from 'react'
 import produce from 'immer'
+import WebMidi, { InputEventNoteoff, InputEventNoteon } from 'webmidi'
 import { Display } from './display'
 import { ReadingPiano } from './reading-piano'
 import './style/reading.scss'
@@ -79,6 +80,14 @@ export const Reading = () => {
   const [correctNotes, setCorrectNotes] = useState<string[]>([])
   const [wrongNotes, setWrongNotes] = useState<string[]>([])
   const [recorder, dispatch] = useReducer(reducer, initalRecorder)
+
+  const handleNoteon = (e: InputEventNoteon) => {
+    console.log(e)
+  }
+
+  const handleNoteoff = (e: InputEventNoteoff) => {
+    console.log(e)
+  }
 
   useEffect(() => {
     // 只要第一个输入

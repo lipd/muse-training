@@ -1439,6 +1439,11 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@types/webmidi@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/webmidi/-/webmidi-2.0.4.tgz#d1bb7287d59cc350333d225ce8b3ad4e54c5e6da"
+  integrity sha512-ouA837zUpSzURsUGvcnay6JwUz2B/UoJP3Lkacnz60y+rul8/auVOFS9LSO6v0gdNbGvRkbHEpayD8PbO7IKhw==
+
 "@types/webpack-env@^1.16.0":
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.16.0.tgz#8c0a9435dfa7b3b1be76562f3070efb3f92637b4"
@@ -9482,6 +9487,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webmidi@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/webmidi/-/webmidi-2.5.2.tgz#0323e906185f0c4ed4224fcbfd1595a250ff5dce"
+  integrity sha512-T/KhiljH0cdaJxB5zl9BEpbFOpKovop8pqCcWLjNPIB8XduIGGg8DkA/NCvy5t2onYCXmn+oMYJ3oYcaIWSvlA==
 
 webpack-bundle-analyzer@^4.4.2:
   version "4.4.2"

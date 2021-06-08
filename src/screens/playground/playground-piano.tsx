@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react'
 import { Synth } from 'tone'
 import { useKeyBoard } from '@hooks/use-keyboard'
 import { Piano } from '@components/piano'
 import { KEYS, KEYType, KEY_MAP } from '@components/piano/key-data'
 import { pitch2Note } from '@utils/note'
+import WebMidi, { InputEventNoteoff, InputEventNoteon } from 'webmidi'
 
 export interface KEYState extends KEYType {
   active: boolean
@@ -89,6 +90,47 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
 
   useKeyBoard({ handleKeyDown, handleKeyUp })
 
+  useEffect(() => {
+    return () => {
+      WebMidi.disable()
+    }
+  }, [])
+
+  const handleNoteon = (e: InputEventNoteon) => {
+    const pitch = `${e.note.name}${e.note.octave}`
+    const note = pitch2Note(pitch)
+    setNotes((prev) => {
+      const next = new Set(prev)
+      next.add(note)
+      return next
+    })
+    synth.triggerAttackRelease(pitch, '8n')
+    dispatch({ type: ActionKind.Activate, pitch })
+  }
+
+  const handleNoteoff = (e: InputEventNoteoff) => {
+    const pitch = `${e.note.name}${e.note.octave}`
+    const note = pitch2Note(pitch)
+    setNotes((prev) => {
+      const next = new Set(prev)
+      next.delete(note)
+      return next
+    })
+    dispatch({ type: ActionKind.Deactivate, pitch })
+  }
+
+  const handleConnectMidi = () => {
+    WebMidi.enable(() => {
+      const input = WebMidi.inputs[0]
+      input.addListener('noteon', 'all', handleNoteon)
+      input.addListener('noteoff', 'all', handleNoteoff)
+    })
+  }
+
+  const handleDisconnectMidi = () => {
+    WebMidi.disable()
+  }
+
   const handlePianoKeyDown = (pitch: string) => {
     synth.triggerAttackRelease(pitch, '8n')
     dispatch({ type: ActionKind.Activate, pitch })
@@ -108,5 +150,13 @@ export const PlaygroundPiano = ({ setNotes }: PianoProps) => {
     })
   }
 
-  return <Piano pianoState={pianoState} handlePianoKeyDown={handlePianoKeyDown} handlePianoKeyUp={handlePianoKeyUp} />
+  return (
+    <Piano
+      pianoState={pianoState}
+      handlePianoKeyDown={handlePianoKeyDown}
+      handlePianoKeyUp={handlePianoKeyUp}
+      handleConnectMidi={handleConnectMidi}
+      handleDisconnectMidi={handleDisconnectMidi}
+    />
+  )
 }

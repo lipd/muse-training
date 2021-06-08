@@ -1,4 +1,4 @@
-import { ENHARMONIC_MAP } from '@components/piano/key-data'
+import { ENHARMONIC_MAP, KEY_MAP } from '@components/piano/key-data'
 
 const letterOrder: string[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 const accOrder: string[] = ['bb', 'b', '', '#', '##']
@@ -37,4 +37,9 @@ export const enharmonic = (note: string) => {
   const enharmonicName = ENHARMONIC_MAP[letter + acc]
   if (!enharmonicName) return note
   return `${enharmonicName}/${octave}`
+}
+
+export const key2Pitch = (key: string) => {
+  const keyOjb = KEY_MAP[key]
+  return `${keyOjb.pitch}${keyOjb.octave}`
 }
