@@ -72,6 +72,7 @@ module.exports = {
     'unicorn/no-array-reduce': OFF,
     'unicorn/no-null': OFF,
     'unicorn/no-array-for-each': OFF,
+    'unicorn/no-nested-ternary': OFF,
 
     'react/prop-types': OFF,
     'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', 'ts', '.jsx', 'js'] }],
