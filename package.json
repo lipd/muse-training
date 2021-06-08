@@ -1,9 +1,8 @@
 {
-  "name": "easy-react-starter",
+  "name": "muse-training",
   "version": "1.0.0",
-  "description": "a virtual piano keyboard supports Web MIDI",
-  "main": "index.js",
-  "repository": "git@github.com:lipd/muse-piano.git",
+  "description": "a web based ear-training software supports Web MIDI",
+  "repository": "git@github.com:lipd/muse-training.git",
   "author": "lipd <lipeidao@gmail.com>",
   "license": "MIT",
   "devDependencies": {
